@@ -19,10 +19,21 @@ class MemberController extends Controller
         return redirect()->route('members.index')->with('success', 'Member added successfully!');
     }
 
+    public function create()
+    {
+        return view('members.create');
+    }
+
     public function index()
     {
         $members = Member::paginate(10);
         return view('members.index', compact('members'));
+    }
+
+    public function edit($id)
+    {
+        $member = Member::findOrFail($id);
+        return view('members.edit', compact('member'));
     }
 
     public function update(Request $request, $id)
@@ -33,7 +44,15 @@ class MemberController extends Controller
             'profession' => 'required', 'linkedin_url' => 'nullable|url'
         ]);
         $member = Member::findOrFail($id);
-        $member->update($request->all());
+        //$member->update($request->all());
+        $member->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'profession' => $request->input('profession'),
+            'company' => $request->input('company'),
+            'linkedin_url' => $request->input('linkedin_url'),
+            'status' => $request->input('status'),
+        ]);
         return redirect()->route('members.index')->with('success', 'Member updated successfully!');
     }
 
