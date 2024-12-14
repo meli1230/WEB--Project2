@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    Pagina Home
-@endsection
+
 
 <table>
     <thead>
@@ -32,3 +31,5 @@
     </tbody>
 </table>
 {{ $successStories->links() }}
+
+@endsection

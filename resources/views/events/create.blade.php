@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    Pagina Home
-@endsection
+
 
 <form action="{{ route('events.store') }}" method="POST">
     @csrf
@@ -16,3 +15,6 @@
 
     <button type="submit">Add Event</button>
 </form>
+
+
+@endsection

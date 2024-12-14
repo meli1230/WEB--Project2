@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    Pagina Home
-@endsection
+
 
 <form action="{{ route('successStories.store') }}" method="POST">
     @csrf
@@ -14,3 +13,6 @@
     <br>
     <button type="submit">Add Story</button>
 </form>
+
+
+@endsection

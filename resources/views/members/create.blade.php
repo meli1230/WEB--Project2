@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    Pagina Home
-@endsection
+
 
 <form action="{{ route('members.store') }}" method="POST">
     @csrf
@@ -28,3 +27,6 @@
 
     <button type="submit">Add Member</button>
 </form>
+
+
+@endsection

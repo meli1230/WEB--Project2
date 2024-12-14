@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    Pagina Home
-@endsection
+
 
 <table>
     <thead>
@@ -33,3 +32,5 @@
 </table>
 
 {{ $events->links() }}
+
+@endsection
