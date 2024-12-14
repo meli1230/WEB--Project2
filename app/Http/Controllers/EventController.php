@@ -12,35 +12,37 @@ class EventController extends Controller
         $request->validate([
             'name' => 'required',
             'event_date' => 'required|date',
-            'description' => 'required'
+            'description' => 'required',
+
         ]);
-        Event::create([$request->all()]);
+        Event::create($request->all());
         return redirect()->route('events.index')->with('success', 'Event added successfully!');
     }
-
+    public function create()
+    {
+        return view('events.create');
+    }
     public function index()
     {
-        $events = Event::paginate(10);
+        $events = Event::paginate(10); // Paginare
         return view('events.index', compact('events'));
     }
-
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'event_date' => 'required|date',
-            'description' => 'required'
-            ]);
+            'description' => 'required',
+        ]);
         $event = Event::findOrFail($id);
         $event->update($request->all());
         return redirect()->route('events.index')->with('success', 'Event updated successfully!');
     }
-
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
         $event->delete();
         return redirect()->route('events.index')->with('success', 'Event deleted successfully!');
     }
-}
 
+}

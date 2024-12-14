@@ -8,22 +8,22 @@
     </tr>
     </thead>
     <tbody>
-
     @foreach ($events as $event)
         <tr>
             <td>{{ $event->name }}</td>
             <td>{{ $event->event_date }}</td>
             <td>{{ $event->description }}</td>
-            <td><a href="{{ route('events.edit', $event->id) }}">Edit</a>
-                <form action="{{ route('events.destroy', $event->id) }}" method="POST"
-                      style="display: inline-block;">
+            <td>
+                <a href="{{ route('events.edit', $event->id) }}">Edit</a>
+                <form action="{{ route('events.destroy', $event->id) }}"
+                      method="POST" style="display: inline-block;">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>
                 </form>
             </td>
         </tr>
-
-    @endforeach     </tbody>
+    @endforeach
+    </tbody>
 </table>
 {{ $events->links() }}
