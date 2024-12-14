@@ -1,3 +1,8 @@
+@extends('layouts.master')
+@section('content')
+    Pagina Home
+@endsection
+
 <table>
     <thead>
     <tr>

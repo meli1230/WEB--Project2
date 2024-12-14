@@ -1,3 +1,8 @@
+@extends('layouts.master')
+@section('content')
+    Pagina Home
+@endsection
+
 <form action="{{ route('members.store') }}" method="POST">
     @csrf
     <label for="name">Name:</label>

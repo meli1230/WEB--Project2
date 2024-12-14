@@ -1,3 +1,8 @@
+@extends('layouts.master')
+@section('content')
+    Pagina Home
+@endsection
+
 <form action="{{ route('successStories.store') }}" method="POST">
     @csrf
     <label for="title">Title:</label>
