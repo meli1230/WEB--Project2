@@ -1,7 +1,9 @@
 @extends('layouts.master')
 @section('content')
+    Pagina Home
+@endsection
 
-    <table>
+<table>
     <thead>
     <tr>
         <th>Name</th>
@@ -35,5 +37,5 @@
     @endforeach
     </tbody>
 </table>
+
 {{ $members->links() }}
-@endsection
