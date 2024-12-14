@@ -13,5 +13,5 @@
     <input type="text" name="member_id" required>
 
     <br>
-    <button type="submit">Add Member</button>
+    <button type="submit">Add Story</button>
 </form>
