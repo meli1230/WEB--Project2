@@ -1,3 +1,7 @@
+<a href="{{ route('members.create') }}" class="btn btn-primary">Add Member</a>
+
+
+
 <table>
     <thead>
     <tr>
