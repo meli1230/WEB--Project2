@@ -1,6 +1,7 @@
-<a href="{{ route('members.create') }}" class="btn btn-primary">Add Member</a>
+@extends('layouts.master')
+@section('content')
 
-<table>
+    <table>
     <thead>
     <tr>
         <th>Name</th>
@@ -35,3 +36,4 @@
     </tbody>
 </table>
 {{ $members->links() }}
+@endsection
