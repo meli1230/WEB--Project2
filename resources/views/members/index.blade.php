@@ -1,4 +1,9 @@
 <a href="{{ route('members.create') }}" class="btn btn-primary">Add Member</a>
+<a href="{{ route('events.index') }}" class="btn btn-secondary">View Events</a>
+<a href="{{ route('events.create') }}" class="btn btn-primary">Add Event</a>
+<a href="{{ route('successStories.index') }}" class="btn btn-secondary">View Success Stories</a>
+<a href="{{ route('successStories.create') }}" class="btn btn-primary">Add Success Story</a>
+
 
 
 

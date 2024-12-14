@@ -5,41 +5,38 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SuccessStoryController;
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Route::get('/members/index', [MemberController::class, 'index']);
-///*Route::get('/members/create', [MemberController::class, 'create']);*/
-//
-//Route::get('/events/index', [EventController::class, 'index']);
-///*Route::get('/events/create', [EventController::class, 'create']);*/
-//
-//Route::get('/successStories/index', [SuccessStoryController::class, 'index']);
-///*Route::get('/successStories/create', [SuccessStoryController::class, 'create']);*/
-//
-//Route::prefix('members')->group(function () {
-//    /* Route::get('/', [MemberController::class, 'index'])->name('members.index'); // Listare membri*/
-//    Route::get('/create', [MemberController::class, 'create'])->name('members.create'); // Formular creare membru
-//    Route::post('/', [MemberController::class, 'store'])->name('members.store'); // Salvare membru nou
-//    Route::get('/{id}/edit', [MemberController::class, 'edit'])->name('members.edit'); // Formular editare
-//    Route::patch('/{id}', [MemberController::class, 'update'])->name('members.update'); // Actualizare membru
-//    Route::delete('/{id}', [MemberController::class, 'destroy'])->name('members.destroy'); // Ștergere membru
-//});
-// Default route
-Route::get('/', [MemberController::class, 'index'])->name('home');
-
-// Members routes
-Route::prefix('members')->group(function () {
-    Route::get('/', [MemberController::class, 'index'])->name('members.index');
-    Route::get('/create', [MemberController::class, 'create'])->name('members.create');
-    Route::post('/', [MemberController::class, 'store'])->name('members.store');
-    Route::get('/{id}/edit', [MemberController::class, 'edit'])->name('members.edit');
-    Route::patch('/{id}', [MemberController::class, 'update'])->name('members.update');
-    Route::delete('/{id}', [MemberController::class, 'destroy'])->name('members.destroy');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-// Events routes
+Route::get('/members/index', [MemberController::class, 'index']);
+Route::get('/members/create', [MemberController::class, 'create']);
+
+Route::get('/events/index', [EventController::class, 'index']);
+Route::get('/events/create', [EventController::class, 'create']);
+
+Route::get('/successStories/index', [SuccessStoryController::class, 'index']);
+Route::get('/successStories/create', [SuccessStoryController::class, 'create']);
+
+/*
+Route::get('/members', [MemberController::class, 'index'])->name('members.index'); // Lista membrilor
+Route::get('/members/create', [MemberController::class, 'create'])->name('members.create'); // Formularul de creare
+Route::post('/members', [MemberController::class, 'store'])->name('members.store'); // Salvarea membrului
+Route::put('/members/{id}', [MemberController::class, 'update'])->name('members.update'); // Actualizarea unui membru
+Route::delete('/members/{id}', [MemberController::class, 'destroy'])->name('members.destroy'); // Ștergerea unui membru
+*/
+
+Route::prefix('members')->group(function () {
+    Route::get('/', [MemberController::class, 'index'])->name('members.index'); // Listare membri
+    Route::get('/create', [MemberController::class, 'create'])->name('members.create'); // Formular creare membru
+    Route::post('/', [MemberController::class, 'store'])->name('members.store'); // Salvare membru nou
+    Route::get('/{id}/edit', [MemberController::class, 'edit'])->name('members.edit'); // Formular editare
+    Route::patch('/{id}', [MemberController::class, 'update'])->name('members.update'); // Actualizare membru
+    Route::delete('/{id}', [MemberController::class, 'destroy'])->name('members.destroy'); // Ștergere membru
+});
+
+//Route::get('/', [MemberController::class, 'index'])->name('members.index');
+
 Route::prefix('events')->group(function () {
     Route::get('/', [EventController::class, 'index'])->name('events.index');
     Route::get('/create', [EventController::class, 'create'])->name('events.create');
@@ -49,7 +46,6 @@ Route::prefix('events')->group(function () {
     Route::delete('/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 });
 
-// Success Stories routes
 Route::prefix('successStories')->group(function () {
     Route::get('/', [SuccessStoryController::class, 'index'])->name('successStories.index');
     Route::get('/create', [SuccessStoryController::class, 'create'])->name('successStories.create');
