@@ -10,19 +10,20 @@ class SuccessStoryController extends Controller
 {
     public function store(Request $request)
     {
+        // Validate input, ensuring the member's name exists in the database
         $request->validate([
             'title' => 'required',
             'story' => 'required',
-            'member_name' => 'required|exists:members,name', // Validate member name exists
+            'member_name' => 'required|exists:members,name',
         ]);
 
-        // Find the member's ID using the provided name
-        $member = Member::where('name', $request->member_name)->first();
+        // Find the member's ID based on the provided name
+        $member = Member::where('name', $request->input('member_name'))->firstOrFail();
 
-        // Store the success story
+        // Create the success story using the member's ID
         SuccessStory::create([
-            'title' => $request->title,
-            'story' => $request->story,
+            'title' => $request->input('title'),
+            'story' => $request->input('story'),
             'member_id' => $member->id,
         ]);
 
@@ -52,21 +53,33 @@ class SuccessStoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Validate input
         $request->validate([
             'title' => 'required',
             'story' => 'required',
             'member_name' => 'required|exists:members,name',
         ]);
 
-        $member = Member::where('name', $request->member_name)->first();
+        // Find the member's ID based on the provided name
+        $member = Member::where('name', $request->input('member_name'))->firstOrFail();
 
+        // Find the success story and update it
         $successStory = SuccessStory::findOrFail($id);
         $successStory->update([
-            'title' => $request->title,
-            'story' => $request->story,
+            'title' => $request->input('title'),
+            'story' => $request->input('story'),
             'member_id' => $member->id,
         ]);
 
         return redirect()->route('successStories.index')->with('success', 'Story updated successfully!');
     }
+
+    // app/Models/SuccessStory.php
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'member_id');
+    }
+
+
 }
