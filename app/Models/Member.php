@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
+    public $timestamps = false; //deactivate timestamps
     //use HasFactory;
     protected $fillable = [
         'name',
@@ -16,4 +17,6 @@ class Member extends Model
         'linkedin_url',
         'status'
     ];
+
+
 }

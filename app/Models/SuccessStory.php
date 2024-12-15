@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SuccessStory extends Model
 {
     //use HasFactory;
+    public $timestamps = false; //deactivate timestamps
     protected $fillable = [
         'title',
         'story',
