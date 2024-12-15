@@ -20,7 +20,9 @@
             <td>
                 <a href="{{ route('events.edit', $event->id) }}">Edit</a>
                 <form action="{{ route('events.destroy', $event->id) }}"
-                      method="POST" style="display: inline-block;">
+                      method="POST"
+                      style="display: inline-block;"
+                      onsubmit="return confirm('Are you sure you want to delete this member?');">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>
