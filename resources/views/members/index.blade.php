@@ -1,6 +1,15 @@
 @extends('layouts.master')
 @section('content')
 
+<!-- Search Form -->
+<form action="{{ route('members.index') }}" method="GET" style="margin-bottom: 20px;">
+    <input type="text" name="search" placeholder="Search by name or email"
+           value="{{ request('search') }}" style="padding: 5px;">
+    <button type="submit">Search</button>
+    @if(request('search'))
+        <a href="{{ route('members.index') }}" style="margin-left: 10px;">Clear Search</a>
+    @endif
+</form>
 
 <table>
     <thead>
@@ -31,13 +40,15 @@
                       onsubmit="return confirm('Are you sure you want to delete this member?');">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button type="saubmit">Delete</button>
                 </form>
             </td>
         </tr>
     @endforeach
     </tbody>
 </table>
+
+
 
 {{ $members->links() }}
 
