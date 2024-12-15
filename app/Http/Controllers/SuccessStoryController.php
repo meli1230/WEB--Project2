@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SuccessStory;
+use App\Models\Member; // Import Member model
 use Illuminate\Http\Request;
 
 class SuccessStoryController extends Controller
@@ -12,25 +13,41 @@ class SuccessStoryController extends Controller
         $request->validate([
             'title' => 'required',
             'story' => 'required',
-            'member_id' => 'required|exists:members,id',
+            'member_name' => 'required|exists:members,name', // Validate member name exists
         ]);
-        SuccessStory::create($request->all());
+
+        // Find the member's ID using the provided name
+        $member = Member::where('name', $request->member_name)->first();
+
+        // Store the success story
+        SuccessStory::create([
+            'title' => $request->title,
+            'story' => $request->story,
+            'member_id' => $member->id,
+        ]);
+
         return redirect()->route('successStories.index')->with('success', 'Story added successfully!');
     }
+
     public function create()
     {
-        return view('successStories.create');
+        // Fetch all member names for the dropdown
+        $members = Member::pluck('name');
+        return view('successStories.create', compact('members'));
     }
+
     public function index()
     {
-        $successStories = SuccessStory::paginate(10); // Paginare
+        // Fetch all success stories with related member info
+        $successStories = SuccessStory::with('member')->paginate(10);
         return view('successStories.index', compact('successStories'));
     }
 
     public function edit($id)
     {
         $successStory = SuccessStory::findOrFail($id);
-        return view('successStories.edit', compact('successStory'));
+        $members = Member::pluck('name');
+        return view('successStories.edit', compact('successStory', 'members'));
     }
 
     public function update(Request $request, $id)
@@ -38,17 +55,18 @@ class SuccessStoryController extends Controller
         $request->validate([
             'title' => 'required',
             'story' => 'required',
-            'member_id' => 'required|exists:members,id',
+            'member_name' => 'required|exists:members,name',
         ]);
+
+        $member = Member::where('name', $request->member_name)->first();
+
         $successStory = SuccessStory::findOrFail($id);
-        $successStory->update($request->all());
+        $successStory->update([
+            'title' => $request->title,
+            'story' => $request->story,
+            'member_id' => $member->id,
+        ]);
+
         return redirect()->route('successStories.index')->with('success', 'Story updated successfully!');
     }
-    public function destroy($id)
-    {
-        $successStory = SuccessStory::findOrFail($id);
-        $successStory->delete();
-        return redirect()->route('successStories.index')->with('success', 'Story deleted successfully!');
-    }
-
 }
