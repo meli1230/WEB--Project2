@@ -9,9 +9,12 @@ class SuccessStory extends Model
 {
     use HasFactory;
     public $timestamps = false; //deactivate timestamps
-    protected $fillable = ['title', 'story', 'member_id'];
+    protected $fillable = [ //specifies which columns to be imported from the database
+        'title',
+        'story',
+        'member_id'];
 
-    // Define the relationship to Member
+    //define the relationship to Member
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id');

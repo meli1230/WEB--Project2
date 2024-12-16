@@ -9,7 +9,7 @@ class Event extends Model
 {
     //use HasFactory;
     public $timestamps = false; //deactivate timestamps
-    protected $fillable = [
+    protected $fillable = [ //specifies which columns to be imported from the database
         'name',
         'event_date',
         'description'

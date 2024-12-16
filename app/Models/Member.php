@@ -9,7 +9,7 @@ class Member extends Model
 {
     public $timestamps = false; //deactivate timestamps
     //use HasFactory;
-    protected $fillable = [
+    protected $fillable = [ //specifies which columns to be imported from the database
         'name',
         'email',
         'profession',
@@ -17,6 +17,4 @@ class Member extends Model
         'linkedin_url',
         'status'
     ];
-
-
 }
