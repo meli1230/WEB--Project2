@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Edit Success Story</h1>
+    <h1>Edit Story</h1>
 
     <form action="{{ route('successStories.update', $successStory->id) }}" method="POST">
         @csrf

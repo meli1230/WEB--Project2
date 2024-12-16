@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
+<h1>Stories</h1>
 <!-- Filtering Section -->
 <form action="{{ route('successStories.index') }}" method="GET" style="margin-bottom: 20px;">
     <!-- Member Name Filter -->

@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
+<h1>Add Story</h1>
 <form action="{{ route('successStories.store') }}" method="POST">
     @csrf
 
