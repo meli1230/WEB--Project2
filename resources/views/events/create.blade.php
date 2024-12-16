@@ -1,9 +1,12 @@
+<!--this blade is extending tha base layout file-->
 @extends('layouts.master')
+
+<!--includes what is in the yield in layouts-->
 @section('content')
 
 <h1>Add Event</h1>
 <form action="{{ route('events.store') }}" method="POST">
-    @csrf
+    @csrf <!--used for security reasons, to counter cross-site request forgery attacks-->
     <label for="name">Name:</label>
     <input type="text" name="name" required><br>
 
@@ -16,5 +19,6 @@
     <button type="submit">Add Event</button>
 </form>
 
-
+<!--end of import-->
 @endsection
+

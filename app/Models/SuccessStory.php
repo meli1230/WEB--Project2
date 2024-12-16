@@ -14,7 +14,7 @@ class SuccessStory extends Model
         'story',
         'member_id'];
 
-    //define the relationship to Member
+    //define the relationship to member
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id');

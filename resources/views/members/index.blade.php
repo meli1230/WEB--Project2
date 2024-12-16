@@ -2,12 +2,12 @@
 @section('content')
 
 <h1>Members</h1>
-<!-- Search and Filter Form -->
+<!--search and filter form-->
 <form action="{{ route('members.index') }}" method="GET" style="margin-bottom: 20px;">
     <input type="text" name="search" placeholder="Search by name or email"
            value="{{ request('search') }}" style="padding: 5px; margin-right: 10px;">
 
-    <!-- Profession Filter -->
+    <!--profession filter-->
     <select name="profession" style="padding: 5px; margin-right: 10px;">
         <option value="">-- Select Profession --</option>
         @foreach ($professions as $item)
@@ -17,7 +17,7 @@
         @endforeach
     </select>
 
-    <!-- Company Filter -->
+    <!--company filter-->
     <select name="company" style="padding: 5px; margin-right: 10px;">
         <option value="">-- Select Company --</option>
         @foreach ($companies as $item)
@@ -27,7 +27,7 @@
         @endforeach
     </select>
 
-    <!-- Status Filter -->
+    <!--status filter-->
     <select name="status" style="padding: 5px; margin-right: 10px;">
         <option value="">-- Select Status --</option>
         @foreach ($statuses as $item)
@@ -37,7 +37,7 @@
         @endforeach
     </select>
 
-    <!-- Submit and Clear Buttons -->
+    <!--submit and clear buttons-->
     <button type="submit">Filter</button>
     @if(request()->hasAny(['search', 'profession', 'company', 'status']))
         <a href="{{ route('members.index') }}" style="margin-left: 10px;">Clear Filters</a>
@@ -45,7 +45,7 @@
 </form>
 
 
-<!--Members table-->
+<!--members table-->
 <table>
     <thead>
     <tr>
