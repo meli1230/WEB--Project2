@@ -30,7 +30,7 @@ This project is a **Laravel-based web application** designed to manage **events,
 - resources/views/ → Blade templates for frontend UI
 - public/ → Static assets (CSS, JavaScript, Images)
 
-### Technologies Used
+## Technologies Used
 - Laravel (Backend Framework)
 - MySQL (Database)
 - Blade Templates & TailwindCSS (Frontend)
