@@ -1,4 +1,4 @@
-# Women TechPower - Laravel Web Management System  
+# Laravel Web App - Women Techpower
 
 ## Overview  
 This project is a **Laravel-based web application** designed to manage **events, job postings, mentorship programs, and user accounts**. It features **CRUD operations, authentication and a responsive frontend** to ensure a seamless user experience.  
